@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import UserCard from "../../components/userCard";
 
 import './index.css';
+import LoadingIndicator from "../../components/loadingIndicator";
 
 export default function HomePage() {
     const [users, setUsers] = useState([]);
@@ -28,7 +29,11 @@ export default function HomePage() {
 
     return (
         <div className="container">
-            {renderUsers()}
+            {
+                users.length() === 0
+                ? <LoadingIndicator />
+                : renderUsers()
+            }
         </div>
     )
 }
